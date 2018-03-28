@@ -4,7 +4,7 @@ filebeat.modules:
     enabled: false
   auth:
     enabled: true
-    var.paths: ["/home/harun/kral.csv"]
-name: test19
+    var.paths: ["/home/tshark.csv"]
+name: test
 output.logstash:
   hosts: ["localhost:5044"]
