@@ -1,0 +1,10 @@
+filebeat.modules:
+- module: system
+  syslog:
+    enabled: false
+  auth:
+    enabled: true
+    var.paths: ["/home/harun/kral.csv"]
+name: test19
+output.logstash:
+  hosts: ["localhost:5044"]
