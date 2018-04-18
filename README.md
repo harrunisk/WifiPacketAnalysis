@@ -21,12 +21,11 @@ Wifi paketlerinin analizinde kullanacağım filtreler:
 | frame.len      | Çerçeve Boyutu      |   
 | radiotap.datarate | Veri Akış Hızı      |   
 
+deneme123   |  deneme123
+---------   |  ---------
+deneme123   |  ---------
 
-wlan.fc.type filtresinden gelecek değerler 0, 1, ya da 2 olacak. Bu değerlerin karşılığı:  
-|A|B|C|AA|
-| --- | --- | --- | --- |
-|Q|W   |    E | RR     |
-
+wlan.fc.type filtresinden gelecek değerler 0, 1, ya da 2 olacak. Bu değerlerin karşılığı: 
 | Değer        | Sonuç           |   
 | ------------- |:-------------:| -----:|   
 | wlan.fc.type==0      | Yönetim Çerçevesi |   
