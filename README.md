@@ -1,10 +1,5 @@
 # WifiPacketAnalysis
 
----
-layout: post
-title: Elasticsearch'de Wifi Paket Analizi 
-subtitle: Tshark Logstash Filebeat Kibana Elasticsearch
----
 
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
@@ -27,7 +22,10 @@ Wifi paketlerinin analizinde kullanacağım filtreler:
 | radiotap.datarate | Veri Akış Hızı      |   
 
 
-wlan.fc.type filtresinden gelecek değerler 0, 1, ya da 2 olacak. Bu değerlerin karşılığı:        
+wlan.fc.type filtresinden gelecek değerler 0, 1, ya da 2 olacak. Bu değerlerin karşılığı:  
+|A|B|C|AA|
+| --- | --- | --- | --- |
+|Q|W   |    E | RR     |
 
 | Değer        | Sonuç           |   
 | ------------- |:-------------:| -----:|   
