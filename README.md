@@ -10,13 +10,13 @@ Mimarimiz aşağıdaki şekilde olacak:
 ![Architecture](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/ArchitectureBlog.png)  
 Wifi paketlerinin analizinde kullanacağım filtreler:  
 
- Filtre                     Açıklama          
-| _ws.col.Time            | Zaman Bilgisi     |
-| wlan.fc.type            | Çerçeve Türü      |   
-| wlan.fc.type_subtype    | Çerçeve Alt Türü  |   
-| radiotap.dbm_antsignal  | Sinyal Gücü(RSSI) |     
-| frame.len               | Çerçeve Boyutu    |   
-| radiotap.datarate       | Veri Akış Hızı    |   
+ Filtre                     Açıklama  
+_ws.col.Time            Zaman Bilgisi  
+wlan.fc.type            Çerçeve Türü        
+wlan.fc.type_subtype    Çerçeve Alt Türü     
+radiotap.dbm_antsignal  Sinyal Gücü(RSSI)     
+frame.len               Çerçeve Boyutu   
+radiotap.datarate       Veri Akış Hızı  
 
 
 wlan.fc.type filtresinden gelecek değerler 0, 1, ya da 2 olacak. Bu değerlerin karşılığı:        
