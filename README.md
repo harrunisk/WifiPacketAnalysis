@@ -1,6 +1,6 @@
 # WifiPacketAnalysis
 
-We can say that Wireshark is graphical version of Tshark. Aim of this article is to analyze some attributes of  wireless packets captured using tshark on Elasticsearch. Tools will be used are Tshark, Elasticsearch, Kibana, Logstash and Filebeat. Installation of Elasticsearch, Kibana, Logstash and Filebeat [on this link](https://www.elastic.co/products). An alternative solution is Docker.
+We can say that Wireshark is graphical version of Tshark. Aim of this article is to analyze some attributes of  wireless packets captured using tshark on Elasticsearch. Tshark, Elasticsearch, Kibana, Logstash and Filebeat are used to analyze.. Installation of Elasticsearch, Kibana, Logstash and Filebeat [on this link](https://www.elastic.co/products). An alternative solution is Docker.
 
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
