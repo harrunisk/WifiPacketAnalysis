@@ -43,11 +43,11 @@ Command with filters:
 ~~~
 tshark -a duration:600 -i phy0.mon -t ad -t ad -lT fields -E separator=, -E quote=d   -e _ws.col.Time  -e wlan.fc.type -e wlan.fc.type_subtype -e radiotap.dbm_antsignal -e frame.len -e radiotap.datarate	 > tshark.csv
 ~~~
-`-a duration:600`  means that capture wireless packets during 600 seconds 
+`-a duration:600`  means that capture wireless packets during 600 seconds  
 `-i phy0.mon` select interface that capture wireless packets. Might be diffrent on you.  
 `-t ad` time format. YYYY-MM-DD is selected here.  
 `> tshark.csv` name of output file.  
-Remainings are about how to seperate attributes.  
+Remainings are about how to separate attributes.  
 
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
