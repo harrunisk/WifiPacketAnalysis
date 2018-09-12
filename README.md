@@ -22,6 +22,13 @@ radiotap.dbm_antsignal   |   Signal strength(RSSI)
 frame.len   |   Frame length
 radiotap.datarate   |   Data rate (Mb/s)
 
+wlan.fc type generate value one of 0,1,2. Meaning of these numbers are as the following:  
+
+Value   |   Meaning
+-----   |   -----
+wlan.fc.type==0   |   Management Frames
+wlan.fc.type==1   |   Control Frames
+wlan.fc.type==2   |   Data Frames
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
 Tshark ile yakalanan wireless paketlerinin bazı özelliklerinin analizini Elasticsearch ve araçları yardımı ile yapacağım.
@@ -42,12 +49,6 @@ radiotap.dbm_antsignal   |   Sinyal Gücü(RSSI)
 frame.len   |   Çerçeve Boyutu
 radiotap.datarate   |   Veri Akış Hızı
 
-wlan.fc type generate value one of 0,1,2. Meaning of these numbers are as the following:  
-Value   |   Meaning
------   |   -----
-wlan.fc.type==0   |   Management Framesi
-wlan.fc.type==1   |   Control Frames
-wlan.fc.type==2   |   Data Frames
 
 wlan.fc.type filtresinden gelecek değerler 0, 1, ya da 2 olacak. Bu değerlerin karşılığı: 
 
