@@ -65,7 +65,7 @@ output.logstash:
 ~~~
 Link [filebeat.yml](https://raw.githubusercontent.com/harrunisk/WifiPacketAnalysis/master/filebeat.yml)  
 `var.paths: ["/home/tshark.csv"]` path of your .csv file. Need to be changed according to your .csv path.  
-You might access to filebeat.yml in Filebeat installation folder.
+You might access to filebeat.yml in Filebeat installation folder on Windows.  
 Path of filebeat.yml on linux systems :
 ~~~
 cd /etc/filebeat
