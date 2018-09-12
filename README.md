@@ -12,15 +12,6 @@ System architecture as the following:
 ![Architecture](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/ArchitectureBlog.png)  
   
 Used filters to analyze wireless packets are as the following:   
-Field Name   |  Description
----------   |  ---------
-_ws.col.Time   |  Time info
-wlan.fc.type   |   Type
-wlan.fc.type_subtype   |   Type/Subtype
-radiotap.dbm_antsignal   |   Signal strength(RSSI)
-frame.len   |   Frame length
-radiotap.datarate   |   Data rate (Mb/s)
-
 
 Filtre   |  Description
 ---------   |  ---------
