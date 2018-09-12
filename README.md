@@ -11,7 +11,7 @@ In a nutshell:
 System architecture as the following:  
 ![Architecture](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/ArchitectureBlog.png)  
   
-Used filters to analyze wireless packets are as the following:  
+Used filters to analyze wireless packets are as the following:   
 Field Name   |  Description
 ---------   |  ---------
 _ws.col.Time   |  Time info
