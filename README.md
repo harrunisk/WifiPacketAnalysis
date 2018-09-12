@@ -22,14 +22,14 @@ frame.len   |   Frame length
 radiotap.datarate   |   Data rate (Mb/s)
 
 
-Filtre   |  Açıklama
+Filtre   |  Description
 ---------   |  ---------
-_ws.col.Time   |  Zaman Bilgisi
-wlan.fc.type   |   Çerçeve Türü
-wlan.fc.type_subtype   |   Çerçeve Alt Türü
-radiotap.dbm_antsignal   |   Sinyal Gücü(RSSI)
-frame.len   |   Çerçeve Boyutu
-radiotap.datarate   |   Veri Akış Hızı
+_ws.col.Time   |  Time info
+wlan.fc.type   |   Type
+wlan.fc.type_subtype   |   Type/Subtype
+radiotap.dbm_antsignal   |   Signal strength(RSSI)
+frame.len   |   Frame length
+radiotap.datarate   |   Data rate (Mb/s)
 
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
