@@ -200,7 +200,7 @@ Data will be indexed in Elasticsearch after while a time. Create a new index pat
   
   
   
-# WifiPacketAnalysis Türkçe  
+# Wireless Paket Analizi  
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
 Tshark ile yakalanan wireless paketlerinin bazı özelliklerinin analizini Elasticsearch ve araçları yardımı ile yapacağım.
