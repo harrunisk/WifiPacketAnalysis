@@ -158,7 +158,45 @@ output {
   }
 }
 ~~~  
-When we finish to configure It should be : [Logstash.yml](https://raw.githubusercontent.com/harrunisk/WifiPacketAnalysis/master/logstash.conf).
+When we finish to configure It should be : [Logstash.yml](https://raw.githubusercontent.com/harrunisk/WifiPacketAnalysis/master/logstash.conf).  
+#### Troubleshoot  
+If it doesn't work, create a new Logstash.conf and copy content of Logstash.yml into this file. Copy newly create Logstash.conf into bin folder which in Logstash installation folder. Run logstash with newly created Logstash.conf file as the following:
+~~~
+./logstash -f Logstash.conf 
+~~~
+ -f indicates configuration file.  
+ ## 4.Last Step and Summary 
+In brief, after we have configured our tools we start to capture wireless packets by using tshark:
+~~~
+tshark -a duration:600 -i phy0.mon -t ad -t ad -lT fields -E separator=, -E quote=d   -e _ws.col.Time  -e wlan.fc.type -e wlan.fc.type_subtype -e radiotap.dbm_antsignal -e frame.len -e radiotap.datarate	 > tshark.csv
+~~~
+We start Elasticsearch, Kibana, Logstash and Filebeat.    
+Readily for linux systems :
+~~~
+sudo systemctl start elasticsearch.service kibana.service logstash.service filebeat.service  
+~~~
+
+Data will be indexed in Elasticsearch after while a time. Create a new index pattern as the following   `Management>Index Patterns >Create Index` afterthat we can analyze data from   `Visualize` tab. Examples:  
+
+![Physical Layer](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/physicalLayerPacketSize.png)    
+
+![Pie](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/pieFrameType.png) 
+
+![DataRate](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/dataRate.png) 
+
+  
+### Resources  
+    
+  
+[Tshark commands](https://www.wireshark.org/docs/man-pages/tshark.html)  
+
+[Wlan filters](https://www.wireshark.org/docs/dfref/w/wlan.html) 
+
+[https://rudibroekhuizen.wordpress.com/2016/02/12/analyse-tshark-capture-in-kibana/](https://rudibroekhuizen.wordpress.com/2016/02/12/analyse-tshark-capture-in-kibana/)  
+
+[http://www.lovemytool.com/blog/2010/02/wireshark-wireless-display-and-capture-filters-samples-by-joke-snelders.html](http://www.lovemytool.com/blog/2010/02/wireshark-wireless-display-and-capture-filters-samples-by-joke-snelders.html)  
+
+[https://dalewifisec.wordpress.com/2014/04/29/wireshark-802-11-display-filters-2/](https://dalewifisec.wordpress.com/2014/04/29/wireshark-802-11-display-filters-2/)
 
 
 
