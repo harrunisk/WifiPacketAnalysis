@@ -38,6 +38,18 @@ wlan.fc.type_subtype==8   |   Beacon
 wlan.fc.type_subtype==27   |   Request To Send
  wlan.fc.type_subtype==28   |   Clear To Send
 
+## 1.Capturing Wireless Packets and Writing to CSV  
+Command with filters:
+~~~
+tshark -a duration:600 -i phy0.mon -t ad -t ad -lT fields -E separator=, -E quote=d   -e _ws.col.Time  -e wlan.fc.type -e wlan.fc.type_subtype -e radiotap.dbm_antsignal -e frame.len -e radiotap.datarate	 > tshark.csv
+~~~
+`-a duration:600`  means that capture wireless packets during 600 seconds 
+`-i phy0.mon` select interface that capture wireless packets. Might be diffrent on you.  
+`-t ad` time format. YYYY-MM-DD is selected here.  
+`> tshark.csv` name of output file.  
+Remainings are about how to seperate attributes.  
+
+
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
 Tshark ile yakalanan wireless paketlerinin bazı özelliklerinin analizini Elasticsearch ve araçları yardımı ile yapacağım.
 Kullanacağım araçlar Tshark, ElasticSearch ,Kibana, Logstash ve Filebeat olacak. Elasticsearch, Kibana, Logstash ve Filebeat 
