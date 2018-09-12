@@ -38,7 +38,7 @@ wlan.fc.type_subtype==8   |   Beacon
 wlan.fc.type_subtype==27   |   Request To Send
  wlan.fc.type_subtype==28   |   Clear To Send
 
-## 1.Capturing Wireless Packets and Writing to CSV  
+## 1.Capture Wireless Packets and Write to CSV  
 Command with filters:
 ~~~
 tshark -a duration:600 -i phy0.mon -t ad -t ad -lT fields -E separator=, -E quote=d   -e _ws.col.Time  -e wlan.fc.type -e wlan.fc.type_subtype -e radiotap.dbm_antsignal -e frame.len -e radiotap.datarate	 > tshark.csv
@@ -49,7 +49,7 @@ tshark -a duration:600 -i phy0.mon -t ad -t ad -lT fields -E separator=, -E quot
 `> tshark.csv` name of output file.  
 Remainings are about how to separate attributes.  
 
-## 2.Listening Output CSV by Using Filebeat
+## 2.Listen Output CSV by Using Filebeat
 Tshark listen tshark.csv and sends to Logstash. Your filebeat.yml configuration file should be as the following:  
 ~~~
 filebeat.modules:
@@ -69,9 +69,96 @@ You might access to filebeat.yml in Filebeat installation folder.
 Path of filebeat.yml on linux systems :
 ~~~
 cd /etc/filebeat
-sudo subl filebeat.yml
+sudo vim filebeat.yml
+~~~
+## 3.Listen Filebeat, Get Data, Apply Filter and Send to ELasticsearch by using Logstash
+We have configured Filebeat to send data to localhost:5044 on second step. We have to get this data from localhost:5044 by using Logstash. To do this we need to configure Logstash.yml input as the following:  
+
+~~~
+input {
+  beats {
+    port => 5044
+  }
+}
 ~~~
 
+We have to put some filters on Logstash.yml to send Elasticsearch properly. I give filters step by step. You can find Logstash.yml at the end of this section. 
+
+We give name to attributes as the following:
+~~~
+   csv {
+     source => "message"
+     columns => [ "col.time","frame.type","frame.subtype","rssi","frame.size","data.rate" ]
+   }
+~~~  
+We configure time format as the following
+ ~~~ 
+date {
+              match => [ "col.time", "YYYY-MM-DD HH:mm:ss.SSSSSSSSS" ]
+              target => "@timestamp"
+              }
+
+~~~ 
+We add some new attributes to our data set as the following:
+  ~~~ 
+  mutate {
+  add_field => {"[hour]" => "%{+HH}"}
+  add_field => {"[minute]" => "%{+mm}"}
+  add_field => {"[second]" => "%{+ss}"}
+
+  }
+  ~~~ 
+We convert some attributes to integer to  get statistical results as the following:
+~~~
+mutate {
+     convert => [ "rssi", "integer" ]
+     convert => [ "frame.size", "integer" ]
+     convert => [ "data.rate", "integer" ]   
+     convert => [ "second", "integer" ]  
+     convert => [ "minute", "integer" ]  
+     convert => [ "hour", "integer" ]  
+
+   }
+~~~
+
+We convert numbers to meaningful results as the following:
+~~~
+   if[frame.type]=="0"{
+   mutate {
+     replace => [ "frame.type", "Management" ]
+   }}
+   if[frame.type]=="1"{
+   mutate {
+     replace => [ "frame.type", "Control" ]
+   }}
+   if[frame.type]=="2"{
+   mutate {
+     replace => [ "frame.type", "Data" ]
+   }}
+~~~  
+We need to send data to Elasticsearch as the following:
+~~~
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}" 
+    document_type => "%{[@metadata][type]}" 
+  }
+}
+~~~
+If you are using x-pack security you need to put user and password areas on Logstash.yml as the following:
+~~~
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}" 
+    document_type => "%{[@metadata][type]}" 
+    user => elastic
+    password => changeme
+  }
+}
+~~~  
+When we finish to configure It should be : [Logstash.yml](https://raw.githubusercontent.com/harrunisk/WifiPacketAnalysis/master/logstash.conf).
 
 
 
@@ -157,7 +244,7 @@ Windows sistemlerde filebeat'in kurulu olduğu yerden filebeat.yml dosyasına er
 filebeat.yml dosyasına linux sistemler için aşağıdaki yol ile ulaşabilirsiniz:
 ~~~
 cd /etc/filebeat
-sudo subl filebeat.yml
+sudo vim filebeat.yml
 ~~~
 ## 3.Logstash'in Filebeat'i Dinlemesi Elastic Searche Yönlendirmesi ve CSV Dosyasına Filtrelerin Uygulanması
 
