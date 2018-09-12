@@ -43,11 +43,48 @@ Command with filters:
 ~~~
 tshark -a duration:600 -i phy0.mon -t ad -t ad -lT fields -E separator=, -E quote=d   -e _ws.col.Time  -e wlan.fc.type -e wlan.fc.type_subtype -e radiotap.dbm_antsignal -e frame.len -e radiotap.datarate	 > tshark.csv
 ~~~
-`-a duration:600`  means that capture wireless packets during 600 seconds  
+`-a duration:600`  capture wireless packets during 600 seconds  
 `-i phy0.mon` select interface that capture wireless packets. Might be diffrent on you.  
 `-t ad` time format. YYYY-MM-DD is selected here.  
 `> tshark.csv` name of output file.  
 Remainings are about how to separate attributes.  
+
+## 2.Listening Output CSV by Using Filebeat
+Tshark listen tshark.csv and sends to Logstash. Your filebeat.yml configuration file should be as the following:  
+~~~
+filebeat.modules:
+- module: system
+  syslog:
+    enabled: false
+  auth:
+    enabled: true
+    var.paths: ["/home/tshark.csv"]
+name: test
+output.logstash:
+  hosts: ["localhost:5044"]
+~~~
+Link [filebeat.yml](https://raw.githubusercontent.com/harrunisk/WifiPacketAnalysis/master/filebeat.yml)  
+`var.paths: ["/home/tshark.csv"]` path of your .csv file. Need to be changed according to your .csv path. 
+You might access to filebeat.yml in Filebeat installation folder.
+Path of filebeat.yml on linux systems :
+~~~
+cd /etc/filebeat
+sudo subl filebeat.yml
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
 
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
