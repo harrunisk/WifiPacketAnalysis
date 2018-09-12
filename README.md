@@ -42,6 +42,12 @@ radiotap.dbm_antsignal   |   Sinyal Gücü(RSSI)
 frame.len   |   Çerçeve Boyutu
 radiotap.datarate   |   Veri Akış Hızı
 
+wlan.fc type generate value one of 0,1,2. Meaning of these numbers are as the following:  
+Value   |   Meaning
+-----   |   -----
+wlan.fc.type==0   |   Management Framesi
+wlan.fc.type==1   |   Control Frames
+wlan.fc.type==2   |   Data Frames
 
 wlan.fc.type filtresinden gelecek değerler 0, 1, ya da 2 olacak. Bu değerlerin karşılığı: 
 
