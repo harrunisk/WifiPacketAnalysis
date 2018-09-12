@@ -6,7 +6,7 @@ In a nutshell:
 2.Tshark writes captured wireless packets as .csv.  
 3.Filebeat listens .csv file sends to Logstash.  
 4.Logstash filters data again and sends to Elasticsearch.   
-5.Analyzing data by using Kibana. Dashboard, graph etc.  
+5.Analyze data by using Kibana. Dashboard, graph etc.  
   
 System architecture as the following:  
 ![Architecture](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/ArchitectureBlog.png)  
@@ -64,12 +64,13 @@ output.logstash:
   hosts: ["localhost:5044"]
 ~~~
 Link [filebeat.yml](https://raw.githubusercontent.com/harrunisk/WifiPacketAnalysis/master/filebeat.yml)  
-`var.paths: ["/home/tshark.csv"]` path of your .csv file. Need to be changed according to your .csv path. 
+`var.paths: ["/home/tshark.csv"]` path of your .csv file. Need to be changed according to your .csv path.  
 You might access to filebeat.yml in Filebeat installation folder.
 Path of filebeat.yml on linux systems :
 ~~~
 cd /etc/filebeat
 sudo subl filebeat.yml
+~~~
 
 
 
