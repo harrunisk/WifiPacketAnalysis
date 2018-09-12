@@ -4,7 +4,7 @@ We can say that Wireshark is graphical version of Tshark. Aim of this article is
 In a nutshell:  
 1.Tshark captures wireless packets by using filters.  
 2.Tshark writes captured wireless packets as .csv.  
-3.Filebeat listens .csv file sends to Logstash. 
+3.Filebeat listens .csv file sends to Logstash.  
 4.Logstash filters data again and sends to Elasticsearch.   
 5.Analyzing data by using Kibana. Dashboard, graph etc.  
   
@@ -29,6 +29,8 @@ Value   |   Meaning
 wlan.fc.type==0   |   Management Frames
 wlan.fc.type==1   |   Control Frames
 wlan.fc.type==2   |   Data Frames
+
+wlan.fc.subtype generate values between 0 and 47. Meaning all of these values are [on this link](https://dalewifisec.wordpress.com/2014/04/29/wireshark-802-11-display-filters-2/). Meaning of some values are on the table as the following:
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
 Tshark ile yakalanan wireless paketlerinin bazı özelliklerinin analizini Elasticsearch ve araçları yardımı ile yapacağım.
