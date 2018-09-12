@@ -4,7 +4,14 @@ We can say that Wireshark is graphical version of Tshark. Aim of this article is
 In a nutshell:  
 1.Tshark captures wireless packets by using filters.  
 2.Tshark writes captured wireless packets as .csv.  
-3.Filebeat listens .csv file sends to Logstash.  
+3.Filebeat listens .csv file sends to Logstash. 
+4.Logstash filters data again and sends to Elasticsearch.  
+5.Analyzing data by using Kibana. Dashboard, graph etc.  
+  
+System architecture as the following:  
+![Architecture](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/ArchitectureBlog.png)  
+
+
 
 
 Tshark'ın Wireshark konsol arayüzü ya da Wireshark'ın tsharkın grafik arayüzü olan hali olduğu söylenebilir. 
