@@ -176,7 +176,7 @@ For linux systems :
 sudo systemctl start elasticsearch.service kibana.service logstash.service filebeat.service  
 ~~~
 
-Data will be indexed in Elasticsearch after while a time. we can create a new index pattern as the following:     `Management>Index Patterns >Create Index`  
+Data will be indexed in Elasticsearch after while a time. We can create a new index pattern as the following:     `Management>Index Patterns >Create Index`  
 Now we can analyze data from   `Visualize` tab.  
 Examples:  
 
