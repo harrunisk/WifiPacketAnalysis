@@ -171,12 +171,13 @@ In brief, after we have configured our tools we start to capture wireless packet
 tshark -a duration:600 -i phy0.mon -t ad -t ad -lT fields -E separator=, -E quote=d   -e _ws.col.Time  -e wlan.fc.type -e wlan.fc.type_subtype -e radiotap.dbm_antsignal -e frame.len -e radiotap.datarate	 > tshark.csv
 ~~~
 We start Elasticsearch, Kibana, Logstash and Filebeat.    
-Readily for linux systems :
+For linux systems :
 ~~~
 sudo systemctl start elasticsearch.service kibana.service logstash.service filebeat.service  
 ~~~
 
-Data will be indexed in Elasticsearch after while a time. Create a new index pattern as the following:     `Management>Index Patterns >Create Index`   afterthat we can analyze data from   `Visualize` tab.  Examples:  
+Data will be indexed in Elasticsearch after while a time. we can create a new index pattern as the following:     `Management>Index Patterns >Create Index`   afterthat we can analyze data from   `Visualize` tab.  
+Examples:  
 
 ![Physical Layer](https://raw.githubusercontent.com/harrunisk/harrunisk.github.io/master/img/physicalLayerPacketSize.png)    
 
