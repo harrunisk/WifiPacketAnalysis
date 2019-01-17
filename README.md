@@ -22,7 +22,7 @@ radiotap.dbm_antsignal   |   Signal strength(RSSI)
 frame.len   |   Frame length
 radiotap.datarate   |   Data rate (Mb/s)
 
-wlan.fc type generate value one of 0,1,2. Meaning of these numbers are as the following:  
+wlan.fc type generate values one of 0,1,2. Meaning of these numbers are as the following:  
 
 Value   |   Meaning
 -----   |   -----
@@ -30,7 +30,7 @@ wlan.fc.type==0   |   Management Frames
 wlan.fc.type==1   |   Control Frames
 wlan.fc.type==2   |   Data Frames
 
-wlan.fc.subtype generate values between 0 and 47. Meaning all of these values are [on this link](https://dalewifisec.wordpress.com/2014/04/29/wireshark-802-11-display-filters-2/). Meaning of some values are on the table as the following:  
+wlan.fc.subtype generate values between 0 and 47. Meaning of all these values are [on this link](https://dalewifisec.wordpress.com/2014/04/29/wireshark-802-11-display-filters-2/). Meaning of some values are on the table as the following:  
 
 Value   |   Meaning
 -----   |   -----
