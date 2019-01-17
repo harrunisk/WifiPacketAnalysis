@@ -160,7 +160,7 @@ output {
 ~~~  
 When we finish to configure It should be : [Logstash.yml](https://raw.githubusercontent.com/harrunisk/WifiPacketAnalysis/master/logstash.conf).  
 #### Troubleshoot  
-If it doesn't work, create a new Logstash.conf and copy content of Logstash.yml into this file. Copy newly create Logstash.conf into bin folder which in Logstash installation folder. Run logstash with newly created Logstash.conf file as the following:
+If it doesn't work, create a new Logstash.conf and copy content of Logstash.yml into this file. Copy newly created Logstash.conf into bin folder in which Logstash installation folder. Run logstash with newly created Logstash.conf file as the following:
 ~~~
 ./logstash -f Logstash.conf 
 ~~~
